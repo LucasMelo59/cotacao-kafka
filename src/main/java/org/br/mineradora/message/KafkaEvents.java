@@ -17,7 +17,7 @@ public class KafkaEvents {
     @Channel("quotation-channel") //canal de acesso ao tópico do kakfa
     Emitter<QuotationDTO> quotationRequestEmitter; // Mensável e tipo da mensagem que será enviada para o kafka
 
-    public void sendNewKafkEvent(QuotationDTO quotation) {
+    public void sendNewKafkaEvent(QuotationDTO quotation) {
         LOG.info("-- Enviando Cotação para Tópico Kafka --");
         quotationRequestEmitter.send(quotation).toCompletableFuture().join();
     }

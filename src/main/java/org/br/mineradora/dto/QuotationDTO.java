@@ -8,6 +8,7 @@ import lombok.extern.jackson.Jacksonized;
 
 import java.math.BigDecimal;
 import java.time.LocalDate;
+import java.util.Date;
 
 @Jacksonized
 @Data
@@ -15,6 +16,6 @@ import java.time.LocalDate;
 @AllArgsConstructor
 public class QuotationDTO {
 
-    private LocalDate date;
+    private Date date;
     private BigDecimal currencyPrice;
 }
