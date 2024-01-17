@@ -17,7 +17,7 @@ public class QuotationEntity {
     @Id
     @GeneratedValue
     private Long id;
-    private Date date;
+    private LocalDateTime date;
     @Column(name = "currency_price")
     private BigDecimal currencyPrice;
     @Column(name = "pct_change")

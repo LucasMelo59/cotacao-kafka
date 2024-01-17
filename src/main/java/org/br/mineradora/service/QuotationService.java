@@ -11,6 +11,7 @@ import org.br.mineradora.repository.QuotationRepository;
 import org.eclipse.microprofile.rest.client.inject.RestClient;
 
 import java.math.BigDecimal;
+import java.time.LocalDateTime;
 import java.util.Date;
 import java.util.List;
 import java.util.concurrent.atomic.AtomicBoolean;
@@ -35,7 +36,7 @@ public class QuotationService {
             kafkaEvents.sendNewKafkaEvent(QuotationDTO
                     .builder()
                     .currencyPrice(new BigDecimal(currencyPriceInfo.getUSDBRL().getBid()))
-                    .date(new Date())
+                    .date(LocalDateTime.now())
                     .build());
         }
     }
@@ -67,7 +68,7 @@ public class QuotationService {
     private void saveQuotation(CurrencyPriceDTO currencyPriceInfo) {
         QuotationEntity quotation = new QuotationEntity();
 
-        quotation.setDate(new Date());
+        quotation.setDate(LocalDateTime.now());
         quotation.setCurrencyPrice(new BigDecimal(currencyPriceInfo.getUSDBRL().getBid()));
         quotation.setPctChange(currencyPriceInfo.getUSDBRL().getPctChange());
         quotation.setPair("USD-BRL");
